@@ -9,11 +9,27 @@ def generate(number):
 	for ii in range(number):
 		kk = randint(0,26)
 		generatedList.append(posList[kk])
-	return generatedList;
+		generated = ''.join(generatedList)
+	return generated;
 
+def check(generated,goal):
+	ii=0
+	count = 0
+	total = len(generated)
+	if len(generated) != len(goal):
+		raise RuntimeError("Something went wrong!")
+	else:
+		while ii<total:
+			if generated[ii] == goal[ii]:
+				count = count+1
+				print(ii+1)
+			ii = ii+1
+	print(count, total)
+	
+	return 0
 
 goal = "methinks it is like a weasel"
 list = generate(len(goal))
-str = ''.join(list)
-print(str)
+print(list)
 print(goal)
+check(list,goal)
