@@ -4,6 +4,7 @@ from pythonds.basic.stack import Stack
 
 def postFix(mystr):
 	prec = {}
+	prec["**"] = 4
 	prec["*"] = 3
 	prec["/"] = 3
 	prec["+"] = 2
@@ -11,12 +12,13 @@ def postFix(mystr):
 	prec["("] = 1
 	opstack = Stack()
 	operator = "+-*/"
+	powop = "**"
 	parens = "()"
 	outList = []
 	mystr = mystr.split()
-	print("".join(mystr))
+	print(mystr)
 	for thing in mystr:
-		if thing in operator:
+		if thing in operator or thing  == powop:
 			if opstack.isEmpty():
 				opstack.push(thing)
 			else:
@@ -38,7 +40,31 @@ def postFix(mystr):
 		# print(thing,"Loop ended",sep=": ")
 	while not opstack.isEmpty():
 		outList.append(opstack.pop())
-	return "".join(outList)
+	return outList
 
-print(postFix("A * B + C * D"))
-print(postFix("( A + B ) * C - ( D - E ) * ( F + G )"))
+def eval(mystr):
+	ops = "+-*/"
+	mystr = mystr.split()
+	s = Stack()
+	for ii in mystr:
+		print(ii)
+		if ii in ops:
+			jj = int(s.pop())
+			kk = int(s.pop())
+			if ii == "+":
+				s.push(jj+kk)
+			elif ii == "-":
+				s.push(jj-kk)
+			elif ii == "*":
+				s.push(jj*kk)
+			elif ii == "/":
+				s.push(kk/jj)
+			elif ii == "**":
+				s.push(kk**ii)
+		else:
+			s.push(ii)
+
+	return(s.pop())
+
+print(postFix("5 * 3 ** ( 4 - 2 )"))
+
