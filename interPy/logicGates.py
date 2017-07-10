@@ -105,6 +105,32 @@ class NandGate(BinaryGate):
 		else:
 			return 1
 
+class XorGate(BinaryGate):
+	def __init__(self,n):
+		BinaryGate.__init__(self,n)
+	def performGateLogic(self):
+		a = self.getPinA()
+		b = self.getPinB()
+		if a == 1:
+			if b == 1:
+				return 0
+			else:
+				return 1
+		elif b == 1:
+			if a == 1:
+				return 0
+			else:
+				return 1
+		else:
+			return 0
+
+class HalfAdder:
+	def __init__(self,n):
+		self.name = n
+		self.output = None
+	def performLogic(self):
+		g1 = 
+
 
 class Connector:
     def __init__(self, fgate, tgate):
@@ -138,18 +164,21 @@ def main():
 # Create a series of gates that prove the following equality: 
 # NOT (( A and B) or (C and D)) is that same as NOT( A and B ) and NOT (C and D). 
 # Make sure to use some of your new gates in the simulation.
-	g1 = AndGate("G1")
-	g2 = AndGate("G2")
-	g3 = NorGate("G3")
-	c1 = Connector(g1,g3)
-	c2 = Connector(g2,g3)
+	# g1 = AndGate("G1")
+	# g2 = AndGate("G2")
+	# g3 = NorGate("G3")
+	# c1 = Connector(g1,g3)
+	# c2 = Connector(g2,g3)
 
-	g4 = NandGate("G4")
-	g5 = NandGate("G5")
-	g6 = AndGate("G6")
-	c3 = Connector(g4,g6)
-	c4 = Connector(g5,g6)
+	# g4 = NandGate("G4")
+	# g5 = NandGate("G5")
+	# g6 = AndGate("G6")
+	# c3 = Connector(g4,g6)
+	# c4 = Connector(g5,g6)
 
-	return g3.getOutput() == g6.getOutput()
+	# return g3.getOutput() == g6.getOutput()
+
+	g1 = XorGate("G1")
+	return g1.getOutput()
 
 print(main())

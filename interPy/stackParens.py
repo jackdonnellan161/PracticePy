@@ -32,4 +32,3 @@ def parChecker(mystr):
 	else:
 		return False
 print(parChecker(parens1),parChecker(parens2))
-
