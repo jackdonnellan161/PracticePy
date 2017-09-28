@@ -50,7 +50,7 @@ def findPossibles(lines):
 				elif jj<6:
 					box = lines[3][6:]+lines[4][6:]+lines[5][6:]
 				else:
-					box = lines[6][6:]+lines[7][6:]+lines[8][6:]
+					box = lines[6][6:]+lines[7][6:]ll +lines[8][6:]
 			for ii in range (1,10):
 				if lines[jj][kk] == "_":
 					if str(ii) not in lines[jj] and str(ii) not in column and str(ii) not in box: #Add if not in the same row or column
